@@ -1,3 +1,3 @@
 library(httptest)
-test_check("clubhouser")
+test_check("shortcutr")
 

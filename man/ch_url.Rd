@@ -2,7 +2,7 @@
 % Please edit documentation in R/api.R
 \name{ch_url}
 \alias{ch_url}
-\title{Clubhouse url}
+\title{shortcut url}
 \usage{
 ch_url(
   ch_base_url = get_url(),
@@ -19,12 +19,12 @@ ch_url(
 
 \item{id}{id of single record to be retrieved using \code{ch_get_one} function}
 
-\item{ch_token}{Clubhouse API token.}
+\item{ch_token}{shortcut API token.}
 
 \item{query}{optional query search term}
 }
 \description{
-Function to construct urls for Clubhouse api calls
+Function to construct urls for shortcut api calls
 }
 \details{
 This function constructs the url for each API call. \code{ch_token}

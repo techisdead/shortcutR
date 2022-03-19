@@ -1,12 +1,12 @@
-Package: clubhouser
+Package: shortcutr
 Type: Package
-Title: API wrappers for clubhouse.io
-Description: <clubhouse.io> is an online project management tool.  This package provides a set of wrappers for the clubhouse API to help people build reports and manage their projects from R.
-Version: 0.4.0
+Title: API wrappers for shortcut.com
+Description: <shortcut.io> is an online project management tool.  This package provides a set of wrappers for the shortcut API to help people build reports and manage their projects from R.
+Version: 0.0.1
 Authors@R: person("Elizabeth", "Stark", role=c("aut", "cre"), email="estark@symbolix.com.au")
-URL: https://github.com/SymbolixAU/clubhouser
-BugReports: https://github.com/SymbolixAU/clubhouser/issues
-License: GPL-3
+URL: https://github.com/SymbolixAU/shortcutr
+BugReports: https://github.com/SymbolixAU/shortcutr/issues
+License: MIT
 Depends:
     R (>= 3.0.0)
 Imports:

@@ -7,14 +7,14 @@
 set_url(url)
 }
 \arguments{
-\item{url}{Clubhouse API URL}
+\item{url}{shortcut API URL}
 }
 \description{
-Change the default API URL for use with the clubhouse API.
+Change the default API URL for use with the shortcut API.
 }
 \details{
 Using \code{set_url} allows you to change the API requests to point to a different API root.
-By default \code{clubhouser} functions use the V2.0 API, "https://api.clubhouse.io/api/v2",
+By default \code{shortcutr} functions use the V2.0 API, "https://api.shortcut.io/api/v2",
 as the basis for all requests
 
 If you want to access an different version of the API you will need to use the \code{set_url}
@@ -23,6 +23,6 @@ function to change the API root
 \examples{
 
 # access the beta version of the API
-set_url(url = "https://clubhouse.io/api/beta")
+set_url(url = "https://shortcut.io/api/beta")
 
 }

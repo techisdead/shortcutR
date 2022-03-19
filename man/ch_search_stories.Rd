@@ -14,7 +14,7 @@ ch_search_stories(
 )
 }
 \arguments{
-\item{query}{Search query.  See https://help.clubhouse.io/hc/en-us/articles/115005967026 for more detail on allowed search structure.}
+\item{query}{Search query.  See https://help.shortcut.io/hc/en-us/articles/115005967026 for more detail on allowed search structure.}
 
 \item{search_limit}{Maximum records to retrieve.  Defaults to 1000.}
 
@@ -26,7 +26,7 @@ ch_search_stories(
 "summary" (flattened data frame with nested lists removed) or
 "minimal" (just "entity_type", "id", "name", "description"). Defaults to "summary"}
 
-\item{ch_token}{Clubhouse API token.}
+\item{ch_token}{shortcut API token.}
 }
 \description{
 Search stories

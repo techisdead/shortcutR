@@ -17,11 +17,11 @@ ch_list_all(
 "files", "labels", "linked-files", "members", "milestones", "projects",
 "repositories", "teams", "workflows", "iterations"}
 
-\item{url}{Clubhouse API url.  Defaults to API V2}
+\item{url}{shortcut API url.  Defaults to API V2}
 
 \item{config}{additional configuration to add to header}
 
-\item{ch_token}{Clubhouse API token.}
+\item{ch_token}{shortcut API token.}
 
 \item{response_type}{either "full" (all data) or "minimal" (just "entity_type", "id",
 "name", "description"). Defaults to "full"}

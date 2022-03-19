@@ -1,11 +1,11 @@
 #' Get endpoint data
 #' 
-#' @param url Clubhouse API url.  Defaults to API V2
+#' @param url shortcut API url.  Defaults to API V2
 #' @param endpoint  data to list. One of "categories", "epic-workflow", "epics", 
 #' "files", "labels", "linked-files", "members", "milestones", "projects", 
 #' "repositories", "teams", "workflows", "iterations"
 #' @param config additional configuration to add to header
-#' @param ch_token Clubhouse API token. 
+#' @param ch_token shortcut API token. 
 #' @param response_type either "full" (all data) or "minimal" (just "entity_type", "id", 
 #'"name", "description"). Defaults to "full"
 #'
@@ -58,13 +58,13 @@ ch_list_all <- function(endpoint = NULL,
 
 #' Get endpoint data for one item
 #' 
-#' @param url Clubhouse API url.  Defaults to API V2
+#' @param url shortcut API url.  Defaults to API V2
 #' @param endpoint  data to list. One of "categories",  "epics", 
 #' "files", "labels", "linked-files",  "milestones", "projects", "repositories",
 #' "teams", "iterations"
 #' @param id the id for the record you want to retrieve
 #' @param config additional configuration to add to header
-#' @param ch_token Clubhouse API token. 
+#' @param ch_token shortcut API token. 
 #'
 #'@examples
 #'\dontrun{

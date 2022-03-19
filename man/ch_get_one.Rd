@@ -19,11 +19,11 @@ ch_get_one(
 "files", "labels", "linked-files",  "milestones", "projects", "repositories",
 "teams", "iterations"}
 
-\item{url}{Clubhouse API url.  Defaults to API V2}
+\item{url}{shortcut API url.  Defaults to API V2}
 
 \item{config}{additional configuration to add to header}
 
-\item{ch_token}{Clubhouse API token.}
+\item{ch_token}{shortcut API token.}
 }
 \description{
 Get endpoint data for one item

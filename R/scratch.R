@@ -1,4 +1,4 @@
-# library(clubhouser)
+# library(shortcutr)
 # 
 # set_token(secret::get_secret('ch_token'))
 # 

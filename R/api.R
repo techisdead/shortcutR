@@ -1,4 +1,4 @@
-#' Clubhouse api
+#' shortcut api
 #'
 #' The default base function to allow generic api calls
 #' @param verb the api verb from the httr package (e.g. GET)
@@ -26,7 +26,7 @@ ch_api <- function (verb,
 
 #' @importFrom httr add_headers
 ch_config <- function () {
-  httr::add_headers(`user-agent`=ua("clubhouser"),
+  httr::add_headers(`user-agent`=ua("shortcutr"),
                     `content-type`="application/json",
                     `http_version` = 1.1 # get around occasional http2 bug
                     )
@@ -37,14 +37,14 @@ ch_config <- function () {
 ua <- function (pkg) paste(pkg, as.character(packageVersion(pkg)), sep="/")
 
 
-#' Clubhouse url
+#' shortcut url
 #' 
-#' Function to construct urls for Clubhouse api calls
+#' Function to construct urls for shortcut api calls
 #' 
 #' @param ch_base_url the base url. Defaults to V2 of API.
 #' @param endpoint endpoint to retrieve (e.g. project, team, story)
 #' @param id id of single record to be retrieved using `ch_get_one` function
-#' @param ch_token Clubhouse API token. 
+#' @param ch_token shortcut API token. 
 #' @param query optional query search term
 #' 
 #' 
@@ -60,7 +60,7 @@ ch_url <- function (ch_base_url = get_url(),
                     query = NULL) {
 
   # example :
-  # https://api.clubhouse.io/api/v2/teams/{team-public-id}?token=$CLUBHOUSE_API_TOKEN
+  # https://api.shortcut.io/api/v2/teams/{team-public-id}?token=$shortcut_API_TOKEN
 
   url <- paste0(ch_base_url,
                 if(!is.null(endpoint)){"/"}, endpoint,

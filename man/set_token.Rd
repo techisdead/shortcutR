@@ -7,19 +7,19 @@
 set_token(token)
 }
 \arguments{
-\item{token}{Clubhouse API token}
+\item{token}{shortcut API token}
 }
 \description{
-Set the default token for use with the clubhouse API.
+Set the default token for use with the shortcut API.
 }
 \details{
 Using \code{set_token} allows you to set your API token once and it is then used for
 all functions that access the API.
 
-See https://app.clubhouse.io/settings/account/api-tokens to get your API token.
+See https://app.shortcut.io/settings/account/api-tokens to get your API token.
 }
 \examples{
 
-set_token(token = "my_clubhouse_token")
+set_token(token = "my_shortcut_token")
 
 }

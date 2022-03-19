@@ -12,7 +12,7 @@ httptest::without_internet({
       httptest::expect_GET(
         httptest::expect_header(
                 ch_GET("http://httpbin.org/"),
-                "user-agent: clubhouser/0.1.0"
+                "user-agent: shortcutr/0.1.0"
             )
         )
     })

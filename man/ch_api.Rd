@@ -2,7 +2,7 @@
 % Please edit documentation in R/api.R
 \name{ch_api}
 \alias{ch_api}
-\title{Clubhouse api}
+\title{shortcut api}
 \usage{
 ch_api(verb, url, config = list(), ...)
 }

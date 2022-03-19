@@ -1,14 +1,14 @@
 
 #' Search stories
 #'
-#' @param query Search query.  See https://help.clubhouse.io/hc/en-us/articles/115005967026 for more detail on allowed search structure.
+#' @param query Search query.  See https://help.shortcut.io/hc/en-us/articles/115005967026 for more detail on allowed search structure.
 #' @param search_limit Maximum records to retrieve.  Defaults to 1000.
 #' @param url Alternatively specify query as a url string. Useful if you want to use a different version of the API (default is V2)
 #' @param config additional configuration to add to header
 #' @param response_type either "full" (all data as a nested list) or 
 #' "summary" (flattened data frame with nested lists removed) or 
 #' "minimal" (just "entity_type", "id", "name", "description"). Defaults to "summary"
-#' @param ch_token Clubhouse API token.
+#' @param ch_token shortcut API token.
 #'
 #'
 #'@examples
@@ -62,7 +62,7 @@ ch_search_stories <- function( query,
   i <- 2
   while( length(res[["next"]]) == 1 & nrec < search_limit){
     
-    url <- paste0( "https://api.clubhouse.io", res[["next"]], 
+    url <- paste0( "https://api.shortcut.io", res[["next"]], 
                    "&token=", ch_token)
     res <- ch_GET(url =  url, config = config)
     lst[[i]] <- as.data.frame( res$data, row.names = NULL  )

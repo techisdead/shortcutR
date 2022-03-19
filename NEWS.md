@@ -1,6 +1,6 @@
-# clubhouser 0.4.0
+# shortcutr 0.4.0
 
-# clubhouser 0.3.0
+# shortcutr 0.3.0
 
 * Changed default api version to V3
 
@@ -12,11 +12,11 @@
 
 * Added `iterations` endpoint to `ch_get_one` and `ch_get_all`
 
-## clubhouser 0.2.0
+## shortcutr 0.2.0
 
 * Added `ch_search_stories` for story search endpoint. 
 * Minor clean ups in documentation
 
-## clubhouser 0.1.0
+## shortcutr 0.1.0
 
 * Initial addition of functions and tests

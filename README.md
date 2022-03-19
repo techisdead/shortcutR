@@ -1,40 +1,40 @@
-clubhouser
+shortcutr
 ================
 
-[![Build Status](https://travis-ci.org/SymbolixAU/clubhouser.png?branch=master)](https://travis-ci.org/SymbolixAU/clubhouser) [![codecov](https://codecov.io/gh/SymbolixAU/clubhouser/branch/master/graph/badge.svg)](https://codecov.io/gh/SymbolixAU/clubhouser) [![cran](https://www.r-pkg.org/badges/version-last-release/clubhouser)](https://cran.r-project.org/package=clubhouser)
+[![Build Status](https://travis-ci.org/SymbolixAU/shortcutr.png?branch=master)](https://travis-ci.org/SymbolixAU/shortcutr) [![codecov](https://codecov.io/gh/SymbolixAU/shortcutr/branch/master/graph/badge.svg)](https://codecov.io/gh/SymbolixAU/shortcutr) [![cran](https://www.r-pkg.org/badges/version-last-release/shortcutr)](https://cran.r-project.org/package=shortcutr)
 
-A simple API wrapper library for accessing the <https://clubhouse.io/> API.
+A simple API wrapper library for accessing the <https://shortcut.io/> API.
 
-By default, the package returns queries from the V2 API - full documentation can be found here <https://api.clubhouse.io/api/v2>.
+By default, the package returns queries from the V2 API - full documentation can be found here <https://api.shortcut.io/api/v2>.
 
 Installing
 ----------
 
-<!-- If you're putting `clubhouser` on CRAN, it can be installed with
+<!-- If you're putting `shortcutr` on CRAN, it can be installed with
 
-    install.packages("clubhouser") -->
+    install.packages("shortcutr") -->
 The pre-release version of the package can be pulled from GitHub using the [devtools](https://github.com/r-lib/devtools) package:
 
     # install.packages("devtools")
-    devtools::install_github("SymbolixAU/clubhouser")
+    devtools::install_github("SymbolixAU/shortcutr")
 
 What else do I need?
 --------------------
 
-You need an access token to retrieve and put records into Clubhouse.
+You need an access token to retrieve and put records into shortcut.
 
-If you / your team has a Clubhouse account, bring up the Settings menu (top right) and select "API tokens" from the list on the left.
+If you / your team has a shortcut account, bring up the Settings menu (top right) and select "API tokens" from the list on the left.
 
-!["api token"](man/figures/clubhouse_api_token.png)
+!["api token"](man/figures/shortcut_api_token.png)
 
 Download and save it somewhere safe. I recommend adding it to your .Rprofile and retrieving it with `Sys.getenv("CH_TOKEN")`
 
-If your team doesn't use Clubhouse.....I can't help you. If you are an agile team it's worth a look - it's more structured than Trello and much more user friendly than Jira. And, no they haven't given me any money (though, if someone is offering....)
+If your team doesn't use shortcut.....I can't help you. If you are an agile team it's worth a look - it's more structured than Trello and much more user friendly than Jira. And, no they haven't given me any money (though, if someone is offering....)
 
 Setting up
 ----------
 
-### Telling `clubhouser` about your API token
+### Telling `shortcutr` about your API token
 
 You can send your token as an argument to the API functions. If you are a little ~~lazy~~ efficient you can also use one of the package's convenience functions to set it once for all subsequent API calls to use.
 
@@ -58,7 +58,7 @@ By default, the package returns queries from the V2 API but you can override thi
 
 ``` r
 
-set_url(url = "https://clubhouse.io/api/beta")
+set_url(url = "https://shortcut.io/api/beta")
 ```
 
 ### Reset deafults
@@ -86,7 +86,7 @@ You can list all records from the following endpoints
 You can pull back all the details:
 
 ``` r
-library(clubhouser)
+library(shortcutr)
 
 set_token("foo")
 
