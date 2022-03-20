@@ -27,7 +27,7 @@ If you / your team has a shortcut account, bring up the Settings menu (top right
 
 !["api token"](man/figures/shortcut_api_token.png)
 
-Download and save it somewhere safe. I recommend adding it to your .Rprofile and retrieving it with `Sys.getenv("CH_TOKEN")`
+Download and save it somewhere safe. I recommend adding it to your .Rprofile and retrieving it with `Sys.getenv("sc_token")`
 
 If your team doesn't use shortcut.....I can't help you. If you are an agile team it's worth a look - it's more structured than Trello and much more user friendly than Jira. And, no they haven't given me any money (though, if someone is offering....)
 
@@ -75,9 +75,9 @@ reset_api()
 'GET'ting records
 -----------------
 
-You can list all the records for a single API endpoint (`ch_list_all`), or you can retrieve a single record (`ch_get_one`).
+You can list all the records for a single API endpoint (`sc_list_all`), or you can retrieve a single record (`sc_get_one`).
 
-### `ch_list_all`
+### `sc_list_all`
 
 You can list all records from the following endpoints
 
@@ -90,7 +90,7 @@ library(shortcutr)
 
 set_token("foo")
 
-ch_list_all(endpoint = "categories",response_type = "full")
+sc_list_all(endpoint = "categories",response_type = "full")
 #   archived color           created_at entity_type external_id  id name
 # 1     TRUE   foo 2016-12-31T12:30:00Z         foo         foo 123  foo
 #   type           updated_at
@@ -101,7 +101,7 @@ Or just a minimal set (useful if you just want to filter and get an `id` or two 
 
 ``` r
 
-ch_list_all(endpoint = "categories",response_type = "minimal")
+sc_list_all(endpoint = "categories",response_type = "minimal")
 #   entity_type  id name
 # 1         foo 123  foo
 ```
@@ -112,7 +112,7 @@ If you know the `id` of the record you want to retrieve you can get that record.
 
 ``` r
 # This returns a list object with all the story details
-res <- ch_get_one(id = 123L, endpoint = "stories")
+res <- sc_get_one(id = 123L, endpoint = "stories")
 
 # From here you can access the tasks on the Story card
 res$tasks

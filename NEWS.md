@@ -6,15 +6,15 @@
 
 ## v 0.2.2
 
-* removed stories from options for `ch_get_all`
+* removed stories from options for `sc_get_all`
 
 ## v 0.2.1
 
-* Added `iterations` endpoint to `ch_get_one` and `ch_get_all`
+* Added `iterations` endpoint to `sc_get_one` and `sc_get_all`
 
 ## shortcutr 0.2.0
 
-* Added `ch_search_stories` for story search endpoint. 
+* Added `sc_searsc_stories` for story search endpoint. 
 * Minor clean ups in documentation
 
 ## shortcutr 0.1.0

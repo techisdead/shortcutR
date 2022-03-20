@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>shortcut url — ch_url • shortcutr</title>
+<title>shortcut url — sc_url • shortcutr</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,7 @@
 
 
 
-<meta property="og:title" content="shortcut url — ch_url" />
+<meta property="og:title" content="shortcut url — sc_url" />
 <meta property="og:description" content="Function to construct urls for shortcut api calls" />
 
 
@@ -125,18 +125,18 @@
     <div class="page-header">
     <h1>shortcut url</h1>
     <small class="dont-index">Source: <a href='https://github.com/SymbolixAU/shortcutr/blob/master/R/api.R'><code>R/api.R</code></a></small>
-    <div class="hidden name"><code>ch_url.Rd</code></div>
+    <div class="hidden name"><code>sc_url.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p>Function to construct urls for shortcut api calls</p>
     </div>
 
-    <pre class="usage"><span class='fu'>ch_url</span><span class='op'>(</span>
-  ch_base_url <span class='op'>=</span> <span class='fu'><a href='get_url.html'>get_url</a></span><span class='op'>(</span><span class='op'>)</span>,
+    <pre class="usage"><span class='fu'>sc_url</span><span class='op'>(</span>
+  sc_base_url <span class='op'>=</span> <span class='fu'><a href='get_url.html'>get_url</a></span><span class='op'>(</span><span class='op'>)</span>,
   endpoint <span class='op'>=</span> <span class='cn'>NULL</span>,
   id <span class='op'>=</span> <span class='cn'>NULL</span>,
-  ch_token <span class='op'>=</span> <span class='fu'><a href='get_token.html'>get_token</a></span><span class='op'>(</span><span class='op'>)</span>,
+  sc_token <span class='op'>=</span> <span class='fu'><a href='get_token.html'>get_token</a></span><span class='op'>(</span><span class='op'>)</span>,
   query <span class='op'>=</span> <span class='cn'>NULL</span>
 <span class='op'>)</span></pre>
 
@@ -144,7 +144,7 @@
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>ch_base_url</th>
+      <th>sc_base_url</th>
       <td><p>the base url. Defaults to V2 of API.</p></td>
     </tr>
     <tr>
@@ -153,10 +153,10 @@
     </tr>
     <tr>
       <th>id</th>
-      <td><p>id of single record to be retrieved using <code>ch_get_one</code> function</p></td>
+      <td><p>id of single record to be retrieved using <code>sc_get_one</code> function</p></td>
     </tr>
     <tr>
-      <th>ch_token</th>
+      <th>sc_token</th>
       <td><p>shortcut API token.</p></td>
     </tr>
     <tr>
@@ -167,7 +167,7 @@
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>This function constructs the url for each API call. <code>ch_token</code>
+    <p>This function constructs the url for each API call. <code>sc_token</code>
 may be input as function parameters or set once with <code>set_token</code>.</p>
 
   </div>

@@ -5,8 +5,8 @@
   if(is.null(getOption("shortcutr"))) {
     
     options <- list(
-      ch_base_url="https://api.shortcut.io/api/v3",
-      ch_token=NA_character_
+      sc_base_url="https://api.app.shortcut.com/api/v3",
+      sc_token=NA_character_
     )
     attr(options, "class") <- "shortcut_api"
     options(shortcutr = options)

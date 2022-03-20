@@ -18,7 +18,7 @@
 set_token <- function(token){
   
   options <- getOption("shortcutr")
-  options[["ch_token"]] <- token
+  options[["sc_token"]] <- token
   class(options) <- "shortcut_api"
   options(shortcutr = options)
   invisible(NULL)
@@ -48,7 +48,7 @@ set_token <- function(token){
 set_url <- function(url){
   
   options <- getOption("shortcutr")
-  options[["ch_base_url"]] <- url
+  options[["sc_base_url"]] <- url
   class(options) <- "shortcut_api"
   options(shortcutr = options)
   invisible(NULL)
@@ -63,11 +63,11 @@ set_url <- function(url){
 #' @export
 get_token <- function(){
   
-  ch_token <- getOption("shortcutr")[["ch_token"]]
-  if(is.na(ch_token)){
+  sc_token <- getOption("shortcutr")[["sc_token"]]
+  if(is.na(sc_token)){
     stop("shortcut API token is missing.  Please use set_token() to set it or include a non-null 'token' parameter in your function call.")
   }
-  return(ch_token)
+  return(sc_token)
 }
 
 
@@ -78,11 +78,11 @@ get_token <- function(){
 #' @export
 get_url <- function(){
   
-  ch_base_url <- getOption("shortcutr")[["ch_base_url"]]
-  if(is.na(ch_base_url)){
+  sc_base_url <- getOption("shortcutr")[["sc_base_url"]]
+  if(is.na(sc_base_url)){
     stop("shortcut API URL is missing.  Please use set_url() to set it or include a non-null 'url' parameter in your function call.")
   }
-  return(ch_base_url)
+  return(sc_base_url)
 }
 
 #' Reset API options
@@ -99,8 +99,8 @@ get_url <- function(){
 reset_api <- function(){
   
   options <- list(
-    ch_base_url="https://api.shortcut.io/api/v2",
-    ch_token=NA_character_
+    sc_base_url="https://api.app.shortcut.com/api/v3",
+    sc_token=NA_character_
   )
   attr(options, "class") <- "shortcut_api"
   options(shortcutr = options)

@@ -1,5 +1,5 @@
 # library(shortcutr)
 # 
-# set_token(secret::get_secret('ch_token'))
+# set_token(secret::get_secret('sc_token'))
 # 
-# ch_list_all("milestones")
+# sc_list_all("milestones")

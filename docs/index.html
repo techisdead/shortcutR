@@ -103,7 +103,7 @@
 <p>You need an access token to retrieve and put records into shortcut.</p>
 <p>If you / your team has a shortcut account, bring up the Settings menu (top right) and select “API tokens” from the list on the left.</p>
 <p><img src="reference/figures/shortcut_api_token.png" alt="“api token”"></p>
-<p>Download and save it somewhere safe. I recommend adding it to your .Rprofile and retrieving it with <code><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv("CH_TOKEN")</a></code></p>
+<p>Download and save it somewhere safe. I recommend adding it to your .Rprofile and retrieving it with <code><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv("sc_token")</a></code></p>
 <p>If your team doesn’t use shortcut…..I can’t help you. If you are an agile team it’s worth a look - it’s more structured than Trello and much more user friendly than Jira. And, no they haven’t given me any money (though, if someone is offering….)</p>
 </div>
 <div id="setting-up" class="section level2">
@@ -143,10 +143,10 @@
 <div id="getting-records" class="section level2">
 <h2 class="hasAnchor">
 <a href="#getting-records" class="anchor"></a>’GET’ting records</h2>
-<p>You can list all the records for a single API endpoint (<code>ch_list_all</code>), or you can retrieve a single record (<code>ch_get_one</code>).</p>
-<div id="ch_list_all" class="section level3">
+<p>You can list all the records for a single API endpoint (<code>sc_list_all</code>), or you can retrieve a single record (<code>sc_get_one</code>).</p>
+<div id="sc_list_all" class="section level3">
 <h3 class="hasAnchor">
-<a href="#ch_list_all" class="anchor"></a><code>ch_list_all</code>
+<a href="#sc_list_all" class="anchor"></a><code>sc_list_all</code>
 </h3>
 <p>You can list all records from the following endpoints</p>
 <blockquote>
@@ -160,7 +160,7 @@
 
 <span class="fu"><a href="reference/set_token.html">set_token</a></span><span class="op">(</span><span class="st">"foo"</span><span class="op">)</span>
 
-<span class="fu"><a href="reference/ch_list_all.html">ch_list_all</a></span><span class="op">(</span>endpoint <span class="op">=</span> <span class="st">"categories"</span>,response_type <span class="op">=</span> <span class="st">"full"</span><span class="op">)</span>
+<span class="fu"><a href="reference/sc_list_all.html">sc_list_all</a></span><span class="op">(</span>endpoint <span class="op">=</span> <span class="st">"categories"</span>,response_type <span class="op">=</span> <span class="st">"full"</span><span class="op">)</span>
 <span class="co">#   archived color           created_at entity_type external_id  id name</span>
 <span class="co"># 1     TRUE   foo 2016-12-31T12:30:00Z         foo         foo 123  foo</span>
 <span class="co">#   type           updated_at</span>
@@ -168,7 +168,7 @@
 <p>Or just a minimal set (useful if you just want to filter and get an <code>id</code> or two so you can retrieve just those records).</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R">
-<span class="fu"><a href="reference/ch_list_all.html">ch_list_all</a></span><span class="op">(</span>endpoint <span class="op">=</span> <span class="st">"categories"</span>,response_type <span class="op">=</span> <span class="st">"minimal"</span><span class="op">)</span>
+<span class="fu"><a href="reference/sc_list_all.html">sc_list_all</a></span><span class="op">(</span>endpoint <span class="op">=</span> <span class="st">"categories"</span>,response_type <span class="op">=</span> <span class="st">"minimal"</span><span class="op">)</span>
 <span class="co">#   entity_type  id name</span>
 <span class="co"># 1         foo 123  foo</span></code></pre></div>
 </div>
@@ -178,7 +178,7 @@
 <p>If you know the <code>id</code> of the record you want to retrieve you can get that record. If I want to get the full information about the Story with <code>id</code> 123, it’s as simple as:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># This returns a list object with all the story details</span>
-<span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/ch_get_one.html">ch_get_one</a></span><span class="op">(</span>id <span class="op">=</span> <span class="fl">123L</span>, endpoint <span class="op">=</span> <span class="st">"stories"</span><span class="op">)</span>
+<span class="va">res</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/sc_get_one.html">sc_get_one</a></span><span class="op">(</span>id <span class="op">=</span> <span class="fl">123L</span>, endpoint <span class="op">=</span> <span class="st">"stories"</span><span class="op">)</span>
 
 <span class="co"># From here you can access the tasks on the Story card</span>
 <span class="va">res</span><span class="op">$</span><span class="va">tasks</span>

@@ -7,13 +7,13 @@
 #' @param ... other parameters to pass on to httr api call
 #' 
 #' @importFrom httr GET PUT PATCH POST DELETE http_status
-ch_api <- function (verb,
+sc_api <- function (verb,
                     url,
                     config=list(), ...) {
   
 
   FUN <- get(verb, envir=asNamespace("httr"))
-  resp <- FUN(url, ..., config=c(ch_config(), config))
+  resp <- FUN(url, ..., config=c(sc_config(), config))
   
   #check for errors
   if (resp$status_code >= 201L)  {  # error
@@ -25,7 +25,7 @@ ch_api <- function (verb,
 }
 
 #' @importFrom httr add_headers
-ch_config <- function () {
+sc_config <- function () {
   httr::add_headers(`user-agent`=ua("shortcutr"),
                     `content-type`="application/json",
                     `http_version` = 1.1 # get around occasional http2 bug
@@ -41,31 +41,31 @@ ua <- function (pkg) paste(pkg, as.character(packageVersion(pkg)), sep="/")
 #' 
 #' Function to construct urls for shortcut api calls
 #' 
-#' @param ch_base_url the base url. Defaults to V2 of API.
+#' @param sc_base_url the base url. Defaults to V2 of API.
 #' @param endpoint endpoint to retrieve (e.g. project, team, story)
-#' @param id id of single record to be retrieved using `ch_get_one` function
-#' @param ch_token shortcut API token. 
+#' @param id id of single record to be retrieved using `sc_get_one` function
+#' @param sc_token shortcut API token. 
 #' @param query optional query search term
 #' 
 #' 
 #' @details 
-#' This function constructs the url for each API call. \code{ch_token} 
+#' This function constructs the url for each API call. \code{sc_token} 
 #' may be input as function parameters or set once with \code{set_token}.
 #' 
 #' @export
-ch_url <- function (ch_base_url = get_url(),
+sc_url <- function (sc_base_url = get_url(),
                     endpoint = NULL,
                     id = NULL,
-                    ch_token = get_token(), 
+                    sc_token = get_token(), 
                     query = NULL) {
 
   # example :
   # https://api.shortcut.io/api/v2/teams/{team-public-id}?token=$shortcut_API_TOKEN
 
-  url <- paste0(ch_base_url,
+  url <- paste0(sc_base_url,
                 if(!is.null(endpoint)){"/"}, endpoint,
                 if(!is.null(id)){"/"}, id,
-                "?token=", ch_token,
+                "?token=", sc_token,
                 if(!is.null(query)){"&query="}, query
   )
   return(url)
@@ -75,10 +75,10 @@ ch_url <- function (ch_base_url = get_url(),
 
 #' @importFrom jsonlite fromJSON
 #' @importFrom httr content
-ch_GET <- function (url, 
+sc_GET <- function (url, 
                     config=list(),  ...) {
   
-  resp <- ch_api("GET", url, config, ...)
+  resp <- sc_api("GET", url, config, ...)
 
   if(length(resp) == 0) warning(
     "Empty list returned. Do you have data at this endpoint?")
@@ -88,11 +88,11 @@ ch_GET <- function (url,
   
 }
   
-ch_PUT <- function (url, ...) ch_api("PUT", url, ...)
+sc_PUT <- function (url, ...) sc_api("PUT", url, ...)
 
-ch_DELETE <- function (url, ...) ch_api("DELETE", url, ...)
+sc_DELETE <- function (url, ...) sc_api("DELETE", url, ...)
 
-ch_POST <- function (url, ...) ch_api("POST", url, ...)
+sc_POST <- function (url, ...) sc_api("POST", url, ...)
 
-# ch_PATCH <- function (url, ...) ch_api("PATCH", url, ...)
+# sc_PATCH <- function (url, ...) sc_api("PATCH", url, ...)
 #
