@@ -16,7 +16,7 @@ sc_api <- function (verb,
   resp <- FUN(url, ..., config=c(sc_config(), config))
   
   #check for errors
-  if (resp$status_code >= 201L)  {  # error
+  if (resp$status_code > 201L)  {  # error
     msg <- httr::http_status(resp)$message
     stop(msg, call.=FALSE)
   } else { # return response
