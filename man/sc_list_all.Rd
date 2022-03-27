@@ -13,16 +13,15 @@ sc_list_all(
 )
 }
 \arguments{
-\item{endpoint}{data to list. One of "categories", "entity-templates","epic-workflow", "epics"
-,"files", "groups", "iterations","labels", "linked-files", "members",
-"milestones", "projects", "repositories",
-"workflows"}
+\item{endpoint}{data to list. One of "categories", "epic-workflow", "epics",
+"files", "groups", labels", "linked-files", "members", "milestones", "projects",
+"repositories", "teams", "workflows", "iterations"}
 
-\item{url}{shortcut API url.  Defaults to API V2}
+\item{url}{Clubhouse API url.  Defaults to API V2}
 
 \item{config}{additional configuration to add to header}
 
-\item{sc_token}{shortcut API token.}
+\item{sc_token}{Clubhouse API token.}
 
 \item{response_type}{either "full" (all data) or "minimal" (just "entity_type", "id",
 "name", "description"). Defaults to "full"}

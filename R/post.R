@@ -11,12 +11,12 @@
 #'
 #'
 #' @examples
-#'
+#' \dontrun{
 #' create_epic( name = "foobar",
 #'              deadline = as.POSIXct("2022-06-30 17:00:00"),
 #'              description = "this is a test"
 #'              )
-#'
+#'}
 #' @export
 #'
 create_epic <- function(name,

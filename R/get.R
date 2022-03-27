@@ -2,10 +2,10 @@
 #' 
 #' @param url Clubhouse API url.  Defaults to API V2
 #' @param endpoint  data to list. One of "categories", "epic-workflow", "epics", 
-#' "files", "labels", "linked-files", "members", "milestones", "projects", 
+#' "files", "groups", labels", "linked-files", "members", "milestones", "projects", 
 #' "repositories", "teams", "workflows", "iterations"
 #' @param config additional configuration to add to header
-#' @param ch_token Clubhouse API token. 
+#' @param sc_token Clubhouse API token. 
 #' @param response_type either "full" (all data) or "minimal" (just "entity_type", "id", 
 #'"name", "description"). Defaults to "full"
 #'
@@ -14,30 +14,30 @@
 #' \dontrun{
 #'
 #' # Retrieve all projects
-#' ch_list_all(endpoint = "projects")
+#' sc_list_all(endpoint = "projects")
 #' 
 #' # List epics then retrieve full details about the first one
-#' df <- ch_list_all("epics", response_type = "minimal")
-#' ch_get_one("epics", id = df[ 1, "id"] )
+#' df <- sc_list_all("epics", response_type = "minimal")
+#' sc_get_one("epics", id = df[ 1, "id"] )
 #' }
 #' 
 #' @export
-ch_list_all <- function(endpoint = NULL,
+sc_list_all <- function(endpoint = NULL,
                         url = NULL,
                         config=list(),
-                        ch_token = get_token(),
+                        sc_token = get_token(),
                         response_type = "full"){
   
   match.arg(endpoint, choices = c("categories", "epic-workflow", "epics", 
-            "files", "labels", "linked-files", "members",
+            "files", "groups", "labels", "linked-files", "members",
             "milestones", "projects", "repositories", 
             "teams", "workflows", "iterations"))
   match.arg(response_type, choices = c("full", "minimal"))
   if(is.null(endpoint) & is.null(url)) stop("Please specify one of url or endpoint")
   if(!is.null(endpoint) & !is.null(url)) stop("Please specify only one of full url or endpoint")
 
-  df <- ch_GET(url = ifelse( is.null(url), 
-                             ch_url(endpoint = endpoint, ch_token = ch_token), 
+  df <- sc_GET(url = ifelse( is.null(url), 
+                             sc_url(endpoint = endpoint, sc_token = sc_token), 
                              url),
                config = config)
 
@@ -64,24 +64,24 @@ ch_list_all <- function(endpoint = NULL,
 #' "teams", "iterations"
 #' @param id the id for the record you want to retrieve
 #' @param config additional configuration to add to header
-#' @param ch_token Clubhouse API token. 
+#' @param sc_token Clubhouse API token. 
 #'
 #'@examples
 #'\dontrun{
 #' # Retrieve all projects
-#' ch_list_all(endpoint = "projects")
+#' sc_list_all(endpoint = "projects")
 #' 
 #' # List epics then retrieve full details about the first one
-#' df <- ch_list_all("epics", response_type = "minimal")
-#' ch_get_one("epics", id = df[ 1, "id"] )
+#' df <- sc_list_all("epics", response_type = "minimal")
+#' sc_get_one("epics", id = df[ 1, "id"] )
 #' }
 #' 
 #' @export
-ch_get_one <- function( id, 
+sc_get_one <- function( id, 
                         endpoint = NULL,
                         url = NULL,
                         config=list(),
-                        ch_token = get_token()){
+                        sc_token = get_token()){
   
   # TODO: "members" endpoint is failing - need to add
   
@@ -93,8 +93,8 @@ ch_get_one <- function( id,
   if(is.null(endpoint) & is.null(url)) stop("Please specify one of url or endpoint")
   if(!is.null(endpoint) & !is.null(url)) stop("Please specify only one of full url or endpoint")
   
-  df <- ch_GET(url = ifelse( is.null(url), 
-                             ch_url(endpoint = endpoint, id = id, ch_token = ch_token), 
+  df <- sc_GET(url = ifelse( is.null(url), 
+                             sc_url(endpoint = endpoint, id = id, sc_token = sc_token), 
                              url),
                config = config)
   

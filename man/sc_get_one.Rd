@@ -15,16 +15,15 @@ sc_get_one(
 \arguments{
 \item{id}{the id for the record you want to retrieve}
 
-\item{endpoint}{data to list. One of "categories", "entity-templates", "epic-workflows", "epics",
-"files", "groups", "iterations"  ,"labels", "linked-files",
-"members", "milestones", "projects", "repositories", "stories",
-"story-links"}
+\item{endpoint}{data to list. One of "categories",  "epics",
+"files", "labels", "linked-files",  "milestones", "projects", "repositories",
+"teams", "iterations"}
 
-\item{url}{shortcut API url.  Defaults to API V2}
+\item{url}{Clubhouse API url.  Defaults to API V2}
 
 \item{config}{additional configuration to add to header}
 
-\item{sc_token}{shortcut API token.}
+\item{sc_token}{Clubhouse API token.}
 }
 \description{
 Get endpoint data for one item
