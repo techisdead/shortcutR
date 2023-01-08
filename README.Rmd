@@ -154,4 +154,58 @@ res$description
 
 ## Next tasks
 
-Currently the package only contains GET functions.  The next step is to add in the ability to create, update and delete records.  I'll track progress in the Issues tab.
+Currently the package only contains GET functions and a couple of WIP post functions.  I'm currently working on the ability to create, update and delete records.  I'll track progress in the Issues tab.
+
+
+### Create iterations for the year
+
+```{r}
+
+library(shortcutr)
+set_token(secret::get_secret('sc_token'))
+
+start_iteration <- seq(as.Date("2023-01-09"), as.Date("2023-12-13"), 14)
+end_iteration <- seq(as.Date("2023-01-22"), as.Date("2023-12-24"), 14)
+
+description <- c(
+  paste0( "Sprint Q1-", 1:6, " 2023"),
+  paste0( "Sprint Q2-", 1:6, " 2023"),
+  paste0( "Sprint Q3-", 1:7, " 2023"),
+  paste0( "Sprint Q4-", 1:6, " 2023")
+  )
+# check
+# cbind(description, as.character(start_iteration), format(end_iteration))
+
+stopifnot(length(start_iteration) == length(end_iteration) & 
+            length(end_iteration) == length(description))
+
+
+for (i in seq_along(start_iteration)){
+  
+  create_iteration(
+    name = paste0( format(start_iteration[i], "%d %b"), 
+                   " - ",
+                   format(end_iteration[i], "%d %b"), ": ",
+                   description[i]),
+    description = description[i],
+    start_date = format( start_iteration[i], "%Y-%m-%d"),
+    end_date = format(end_iteration[i], "%Y-%m-%d")
+  )
+  
+  
+}
+
+
+## delete
+
+# its <- sc_list_all("iterations", response_type = "minimal")
+# ids <- its[grepl("^.*: Sprint Q.*2022", its$name), "id"]
+# 
+# delete_iteration("30841")
+# 
+# for (id in ids){
+#   
+#   delete_iteration(id)
+# }
+
+```

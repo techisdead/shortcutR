@@ -10,8 +10,8 @@ create_epic(
   deadline = NULL,
   description = NULL,
   epic_state_id = sc_list_all("epic-workflow")$default_epic_state_id,
-  milestone_id = NULL,
-  planned_start_date = NULL,
+  milestone_id = NA,
+  planned_start_date = NA,
   config = list(),
   sc_token = get_token()
 )

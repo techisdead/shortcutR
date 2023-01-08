@@ -24,8 +24,8 @@ create_epic <- function(name,
             deadline = NULL,
             description = NULL,
             epic_state_id = sc_list_all("epic-workflow")$default_epic_state_id,
-            milestone_id = NULL,
-            planned_start_date = NULL,
+            milestone_id = NA,
+            planned_start_date = NA,
           #  follower_ids = NULL,
           #  group_id = NULL,
           #  labels = NULL,
@@ -56,10 +56,69 @@ create_epic <- function(name,
 
 
 
+#' create iteration
+#' 
+#' @param name Required. The name of this Iteration.
+#' @param start_date as character. Required. The date this Iteration begins, e.g. "2019-07-01".
+#' @param end_date as character. Required. The date this Iteration ends, e.g. "2019-07-01".
+#' @param description Required. The description of the Iteration.
+#' @param follower_ids TODO An array of UUIDs for any Members you want to add as Followers.
+#' @param group_ids TODO An array of UUIDs for any Groups you want to add as Followers. Currently, only one Group association is presented in our web UI.
+#' @param labels An array of Labels attached to the Iteration.
+#' 
+#' @examples 
+#' \dontrun{
+#' create_iteration(
+#'   name = "09 Jan - 15 Jan 2022",
+#'   description = "Sprint Q1-1 2022",
+#'   start_date = "2022-01-09",
+#'   end_date = "2022-01-15"
+#' )
+#' }
+#' 
+#' @export
+create_iteration <- function(
+    name, 
+    start_date,
+    end_date,
+    description,
+    follower_ids = NA,
+    group_ids = NA,
+    labels = NA,
+    config=list(),
+    sc_token = get_token()
+){
+  
+  ## TODO - check formatting for the array types
+  if (!is.na(follower_ids) | !is.na(group_ids) | !is.na(labels)){
+    warning( "i haven't testsed follower_ids, group_ids or labels yet. This might break")
+  }
+  
+  
+  lst_body <- list(
+    description = description,
+    end_date = end_date,
+    follower_ids = follower_ids,
+    group_ids = group_ids,
+    labels = labels,
+    name = name,
+    start_date = start_date
+  )
+  
+  body_content <- jsonlite::toJSON(lst_body, null = "null", auto_unbox = TRUE)
+
+  df <- sc_POST(url = sc_url(endpoint = "iterations", sc_token = sc_token),
+                body = body_content,
+                config = config)
+  
+  return(df)
+  
+}
+
 
 
 fmt_date_string <- function(dte){
   
-  ifelse(is.null(dte),NULL, format(deadline, "%Y-%m-%dT%H:%M:%SZ") )
+  ifelse(is.null(dte),NULL, format(dte, "%Y-%m-%dT%H:%M:%SZ") )
   
 }
