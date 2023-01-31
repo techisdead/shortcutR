@@ -12,12 +12,15 @@ create_epic(
   epic_state_id = sc_list_all("epic-workflow")$default_epic_state_id,
   milestone_id = NA,
   planned_start_date = NA,
+  requested_by_id = NULL,
   config = list(),
   sc_token = get_token()
 )
 }
 \arguments{
 \item{name}{Required. The Epic’s name.}
+
+\item{created_at}{Time created. Default is \code{Sys.time()}}
 
 \item{deadline}{POSIXct format. The Epic’s deadline. Default NULL}
 
@@ -31,6 +34,10 @@ create_epic(
 \item{planned_start_date}{POSIXct. The Epic’s planned start date. Default NULL}
 
 \item{requested_by_id}{uuid The ID of the member that requested the epic. Default NULL}
+
+\item{config}{(optional) additional configuration to add to header}
+
+\item{sc_token}{shortcut API token.  Defaults to \code{get_token()}}
 }
 \description{
 create epic

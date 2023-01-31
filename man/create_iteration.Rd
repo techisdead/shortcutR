@@ -9,9 +9,6 @@ create_iteration(
   start_date,
   end_date,
   description,
-  follower_ids = NA,
-  group_ids = NA,
-  labels = NA,
   config = list(),
   sc_token = get_token()
 )
@@ -25,14 +22,15 @@ create_iteration(
 
 \item{description}{Required. The description of the Iteration.}
 
-\item{follower_ids}{TODO An array of UUIDs for any Members you want to add as Followers.}
+\item{config}{(optional) additional configuration to add to header}
 
-\item{group_ids}{TODO An array of UUIDs for any Groups you want to add as Followers. Currently, only one Group association is presented in our web UI.}
-
-\item{labels}{An array of Labels attached to the Iteration.}
+\item{sc_token}{shortcut API token.  Defaults to \code{get_token()}}
 }
 \description{
 create iteration
+}
+\details{
+arguments for \code{follower_ids}, \code{group_ids}, \code{labels} are not yet implemented. See \href{https://github.com/techisdead/shortcutR/issues/2}{issue 2} to contribute.
 }
 \examples{
 \dontrun{

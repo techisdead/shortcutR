@@ -1,6 +1,7 @@
 #' create epic
 #'
 #' @param name Required. The Epic’s name.
+#' @param created_at Time created. Default is \code{Sys.time()}
 #' @param deadline POSIXct format. The Epic’s deadline. Default NULL
 #' @param description chr The Epic’s description. Default NULL
 #' @param epic_state_id int The ID of the Epic State. See
@@ -8,7 +9,8 @@
 #' @param milestone_id int The ID of the Milestone this Epic is related to. Default NULL
 #' @param planned_start_date POSIXct. The Epic’s planned start date. Default NULL
 #' @param requested_by_id uuid The ID of the member that requested the epic. Default NULL
-#'
+#' @param config (optional) additional configuration to add to header
+#' @param sc_token shortcut API token.  Defaults to \code{get_token()}
 #'
 #' @examples
 #' \dontrun{
@@ -30,7 +32,7 @@ create_epic <- function(name,
           #  group_id = NULL,
           #  labels = NULL,
           # owner_ids = NULL,
-          # requested_by_id = NULL,
+            requested_by_id = NULL,
             config=list(),
             sc_token = get_token()
 ){
@@ -62,8 +64,11 @@ create_epic <- function(name,
 #' @param start_date as character. Required. The date this Iteration begins, e.g. "2019-07-01".
 #' @param end_date as character. Required. The date this Iteration ends, e.g. "2019-07-01".
 #' @param description Required. The description of the Iteration.
+#' @param config (optional) additional configuration to add to header
+#' @param sc_token shortcut API token.  Defaults to \code{get_token()}
 #' 
-#' @details arguments for \code{follower_ids}, \code{group_ids}, \code{labels} are not yet implemented. See \href{https://github.com/techisdead/shortcutR/issues/2}{issue 2} to contribute.
+#' @details 
+#' arguments for \code{follower_ids}, \code{group_ids}, \code{labels} are not yet implemented. See \href{https://github.com/techisdead/shortcutR/issues/2}{issue 2} to contribute.
 #' 
 #' @examples 
 #' \dontrun{
@@ -89,9 +94,9 @@ create_iteration <- function(
 ){
   
   ## TODO - check formatting for the array types
-  ##' @param follower_ids TODO An array of UUIDs for any Members you want to add as Followers.
-  ##' @param group_ids TODO An array of UUIDs for any Groups you want to add as Followers. Currently, only one Group association is presented in our web UI.
-  ##' @param labels An array of Labels attached to the Iteration.
+  ##' follower_ids TODO An array of UUIDs for any Members you want to add as Followers.
+  ##' group_ids TODO An array of UUIDs for any Groups you want to add as Followers. Currently, only one Group association is presented in our web UI.
+  ##'  labels An array of Labels attached to the Iteration.
   
   follower_ids <- NA
   group_ids <- NA

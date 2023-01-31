@@ -6,7 +6,7 @@ Version: 0.0.1.9000
 Authors@R: person("Elizabeth", "Stark", role=c("aut", "cre"), email="estark@symbolix.com.au")
 URL: https://github.com/SymbolixAU/shortcutr
 BugReports: https://github.com/SymbolixAU/shortcutr/issues
-License: MIT
+License: MIT + file LICENSE
 Depends:
     R (>= 3.0.0)
 Imports:
