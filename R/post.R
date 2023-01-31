@@ -62,9 +62,8 @@ create_epic <- function(name,
 #' @param start_date as character. Required. The date this Iteration begins, e.g. "2019-07-01".
 #' @param end_date as character. Required. The date this Iteration ends, e.g. "2019-07-01".
 #' @param description Required. The description of the Iteration.
-#' @param follower_ids TODO An array of UUIDs for any Members you want to add as Followers.
-#' @param group_ids TODO An array of UUIDs for any Groups you want to add as Followers. Currently, only one Group association is presented in our web UI.
-#' @param labels An array of Labels attached to the Iteration.
+#' 
+#' @details arguments for \code{follower_ids}, \code{group_ids}, \code{labels} are not yet implemented. See \href{https://github.com/techisdead/shortcutR/issues/2}{issue 2} to contribute.
 #' 
 #' @examples 
 #' \dontrun{
@@ -82,18 +81,21 @@ create_iteration <- function(
     start_date,
     end_date,
     description,
-    follower_ids = NA,
-    group_ids = NA,
-    labels = NA,
+   # follower_ids = NA,
+   # group_ids = NA,
+   #  labels = NA,
     config=list(),
     sc_token = get_token()
 ){
   
   ## TODO - check formatting for the array types
-  if (!is.na(follower_ids) | !is.na(group_ids) | !is.na(labels)){
-    warning( "i haven't testsed follower_ids, group_ids or labels yet. This might break")
-  }
+  ##' @param follower_ids TODO An array of UUIDs for any Members you want to add as Followers.
+  ##' @param group_ids TODO An array of UUIDs for any Groups you want to add as Followers. Currently, only one Group association is presented in our web UI.
+  ##' @param labels An array of Labels attached to the Iteration.
   
+  follower_ids <- NA
+  group_ids <- NA
+  labels <- NA
   
   lst_body <- list(
     description = description,
