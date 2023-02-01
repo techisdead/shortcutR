@@ -14,15 +14,15 @@
 #' \dontrun{
 #'
 #' # Retrieve all projects
-#' sc_list_all(endpoint = "projects")
+#' get_all(endpoint = "projects")
 #' 
 #' # List epics then retrieve full details about the first one
-#' df <- sc_list_all("epics", response_type = "minimal")
-#' sc_get_one("epics", id = df[ 1, "id"] )
+#' df <- get_all("epics", response_type = "minimal")
+#' get_one("epics", id = df[ 1, "id"] )
 #' }
 #' 
 #' @export
-sc_list_all <- function(endpoint = NULL,
+get_all <- function(endpoint = NULL,
                         url = NULL,
                         config=list(),
                         sc_token = get_token(),
@@ -69,15 +69,15 @@ sc_list_all <- function(endpoint = NULL,
 #'@examples
 #'\dontrun{
 #' # Retrieve all projects
-#' sc_list_all(endpoint = "projects")
+#' get_all(endpoint = "projects")
 #' 
 #' # List epics then retrieve full details about the first one
-#' df <- sc_list_all("epics", response_type = "minimal")
-#' sc_get_one("epics", id = df[ 1, "id"] )
+#' df <- get_all("epics", response_type = "minimal")
+#' get_one("epics", id = df[ 1, "id"] )
 #' }
 #' 
 #' @export
-sc_get_one <- function( id, 
+get_one <- function( id, 
                         endpoint = NULL,
                         url = NULL,
                         config=list(),

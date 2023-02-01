@@ -12,11 +12,11 @@
 
 ## v 0.2.1
 
-* Added `iterations` endpoint to `sc_get_one` and `sc_get_all`
+* Added `iterations` endpoint to `get_one` and `sc_get_all`
 
 ## shortcutr 0.2.0
 
-* Added `sc_searsc_stories` for story search endpoint. 
+* Added `search_stories` for story search endpoint. 
 * Minor clean ups in documentation
 
 ## shortcutr 0.1.0
