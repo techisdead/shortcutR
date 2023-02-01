@@ -5,7 +5,7 @@
 #' @param deadline POSIXct format. The Epic’s deadline. Default NULL
 #' @param description chr The Epic’s description. Default NULL
 #' @param epic_state_id int The ID of the Epic State. See
-#'        /code{sc_list_all("epic-workflow")}, Defaults to your accounts default state
+#'        /code{get_all("epic-workflow")}, Defaults to your accounts default state
 #' @param milestone_id int The ID of the Milestone this Epic is related to. Default NULL
 #' @param planned_start_date POSIXct. The Epic’s planned start date. Default NULL
 #' @param requested_by_id uuid The ID of the member that requested the epic. Default NULL
@@ -25,7 +25,7 @@ create_epic <- function(name,
             created_at = Sys.time(),
             deadline = NULL,
             description = NULL,
-            epic_state_id = sc_list_all("epic-workflow")$default_epic_state_id,
+            epic_state_id = get_all("epic-workflow")$default_epic_state_id,
             milestone_id = NA,
             planned_start_date = NA,
           #  follower_ids = NULL,

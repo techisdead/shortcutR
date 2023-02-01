@@ -9,7 +9,7 @@ create_epic(
   created_at = Sys.time(),
   deadline = NULL,
   description = NULL,
-  epic_state_id = sc_list_all("epic-workflow")$default_epic_state_id,
+  epic_state_id = get_all("epic-workflow")$default_epic_state_id,
   milestone_id = NA,
   planned_start_date = NA,
   requested_by_id = NULL,
@@ -27,7 +27,7 @@ create_epic(
 \item{description}{chr The Epic’s description. Default NULL}
 
 \item{epic_state_id}{int The ID of the Epic State. See
-/code{sc_list_all("epic-workflow")}, Defaults to your accounts default state}
+/code{get_all("epic-workflow")}, Defaults to your accounts default state}
 
 \item{milestone_id}{int The ID of the Milestone this Epic is related to. Default NULL}
 

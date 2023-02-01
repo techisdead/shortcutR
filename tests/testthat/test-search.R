@@ -10,35 +10,35 @@ testthat::test_that("Can't send an invalid endpoint",{
     sc_(endpoint = "badendpoint")
     )
   testthat::expect_error(
-    sc_get_one(id = 123L, endpoint = "badendpoint")
+    get_one(id = 123L, endpoint = "badendpoint")
   )
 } )
 
 testthat::test_that("Can't send an invalid response_type",{
   testthat::expect_error(
-    sc_list_all(endpoint = "epic", response_type = "bad_choice")
+    get_all(endpoint = "epic", response_type = "bad_choice")
   )
   testthat::expect_error(
-    sc_list_all(id = 123L, endpoint = "epic", response_type = "bad_choice")
+    get_all(id = 123L, endpoint = "epic", response_type = "bad_choice")
   )
 } )
 
 
 testthat::test_that("Must set one of url and endpoint", {
   testthat::expect_error(
-    sc_list_all()
+    get_all()
   )
   testthat::expect_error(
-    sc_get_one(id = 123L)
+    get_one(id = 123L)
   )
 })
 
 testthat::test_that("Can't set both url and endpoint", {
   testthat::expect_error(
-    sc_list_all(endpoint = "epics", url = "https://someurl.com")
+    get_all(endpoint = "epics", url = "https://someurl.com")
   )
   testthat::expect_error(
-    sc_get_one(id = 123L, endpoint = "epics", url = "https://someurl.com")
+    get_one(id = 123L, endpoint = "epics", url = "https://someurl.com")
   )
 })
 # 
@@ -50,7 +50,7 @@ testthat::test_that("Can't set both url and endpoint", {
 #     #              "milestones", "projects", "repositories",
 #     #              "teams")
 #     
-#     res <- sc_list_all(endpoint = "categories", sc_token = tok, response_type = "full")
+#     res <- get_all(endpoint = "categories", sc_token = tok, response_type = "full")
 #     
 #     expect_is(res, "data.frame")
 #     expect_identical(res$archived, TRUE)
@@ -67,7 +67,7 @@ testthat::test_that("Can't set both url and endpoint", {
 #   
 #   test_that("We can get one record correctly", {
 # 
-#     res <- sc_get_one(id = 123L, endpoint = "stories", sc_token = tok)
+#     res <- get_one(id = 123L, endpoint = "stories", sc_token = tok)
 #     
 #     expect_is(res, "list")
 #     expect_identical(res$id, 123L)
@@ -93,7 +93,7 @@ testthat::test_that("Can't set both url and endpoint", {
 #     # I set up mock endpoint `labels` with token = "bar" to be empty
 #     tok2 <- "bar"
 #     testthat::expect_message(
-#     sc_list_all(endpoint = "labels", sc_token = tok2, response_type = "minimal")
+#     get_all(endpoint = "labels", sc_token = tok2, response_type = "minimal")
 #     ,"Can't return minimal columns - no records")
 #     
 #   })

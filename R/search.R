@@ -14,21 +14,21 @@
 #'@examples
 #'\dontrun{
 #' # Search for the term "foo" anywhere in stories
-#' sc_searsc_stories(query = "foo")
+#' search_stories(query = "foo")
 #'
 #' # Search for epic names that contain specified text
 #' # Note - no whitespace areound the ":"
-#' sc_searsc_stories(query = "epic:foo")
+#' search_stories(query = "epic:foo")
 #'
 #' # Combine search terms with "AND" ("OR" combinations are not supported by the API V2)
 #' # Note the whitespace between each filter
-#' sc_searsc_stories(query = "epic:foo is:done type:bug")
+#' search_stories(query = "epic:foo is:done type:bug")
 #'
 #'
 #' }
 #'
 #' @export
-sc_searsc_stories <- function( query,
+search_stories <- function( query,
                         searsc_limit = 1000,
                         url = NULL,
                         config=list(),

@@ -17,7 +17,7 @@ sc_url(
 
 \item{endpoint}{endpoint to retrieve (e.g. project, team, story)}
 
-\item{id}{id of single record to be retrieved using \code{sc_get_one} function}
+\item{id}{id of single record to be retrieved using \code{get_one} function}
 
 \item{sc_token}{shortcut API token.}
 

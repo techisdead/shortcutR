@@ -43,7 +43,7 @@ ua <- function (pkg) paste(pkg, as.character(packageVersion(pkg)), sep="/")
 #' 
 #' @param sc_base_url the base url. Defaults to V2 of API.
 #' @param endpoint endpoint to retrieve (e.g. project, team, story)
-#' @param id id of single record to be retrieved using `sc_get_one` function
+#' @param id id of single record to be retrieved using `get_one` function
 #' @param sc_token shortcut API token. 
 #' @param query optional query search term
 #' 
