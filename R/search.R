@@ -1,33 +1,33 @@
-
+#' 
 #' Search stories
-#'
+#' 
 #' @param query Search query.  See https://help.shortcut.io/hc/en-us/articles/115005967026 for more detail on allowed search structure.
 #' @param searsc_limit Maximum records to retrieve.  Defaults to 1000.
 #' @param url Alternatively specify query as a url string. Useful if you want to use a different version of the API (default is V2)
 #' @param config additional configuration to add to header
-#' @param response_type either "full" (all data as a nested list) or 
-#' "summary" (flattened data frame with nested lists removed) or 
+#' @param response_type either "full" (all data as a nested list) or
+#' "summary" (flattened data frame with nested lists removed) or
 #' "minimal" (just "entity_type", "id", "name", "description"). Defaults to "summary"
 #' @param sc_token shortcut API token.
-#'
-#'
-#'@examples
-#'\dontrun{
+#' 
+#' 
+#' @examples
+#' \dontrun{
 #' # Search for the term "foo" anywhere in stories
 #' search_stories(query = "foo")
-#'
+#' 
 #' # Search for epic names that contain specified text
 #' # Note - no whitespace areound the ":"
 #' search_stories(query = "epic:foo")
-#'
+#' 
 #' # Combine search terms with "AND" ("OR" combinations are not supported by the API V2)
 #' # Note the whitespace between each filter
 #' search_stories(query = "epic:foo is:done type:bug")
-#'
-#'
+#' 
+#' 
 #' }
-#'
-#' @export
+#' 
+# @export
 # search_stories <- function( query,
 #                         searsc_limit = 1000,
 #                         url = NULL,

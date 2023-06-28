@@ -51,6 +51,10 @@ search_stories(query = "epic:foo is:done type:bug")
 
 }
 
+Search endpoint
+
+Update to match new v3 function that allows search of stories, epics, milestones and iterations
+
 \dontrun{
 # Search for the term "foo" anywhere in stories
 search(endpoint = "stories" query = "foo")
