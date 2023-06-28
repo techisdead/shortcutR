@@ -81,6 +81,7 @@ create_epic <- function(name,
 #' }
 #' 
 #' @export
+#' 
 create_iteration <- function(
     name, 
     start_date,
@@ -94,9 +95,9 @@ create_iteration <- function(
 ){
   
   ## TODO - check formatting for the array types
-  ##' follower_ids TODO An array of UUIDs for any Members you want to add as Followers.
-  ##' group_ids TODO An array of UUIDs for any Groups you want to add as Followers. Currently, only one Group association is presented in our web UI.
-  ##'  labels An array of Labels attached to the Iteration.
+  ## follower_ids TODO An array of UUIDs for any Members you want to add as Followers.
+  ## group_ids TODO An array of UUIDs for any Groups you want to add as Followers. Currently, only one Group association is presented in our web UI.
+  ##  labels An array of Labels attached to the Iteration.
   
   follower_ids <- NA
   group_ids <- NA
