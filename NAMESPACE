@@ -2,6 +2,7 @@
 
 export(create_epic)
 export(create_iteration)
+export(create_story_link)
 export(delete_iteration)
 export(get_all)
 export(get_one)
