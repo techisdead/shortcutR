@@ -27,7 +27,7 @@ create_epic(
 \item{description}{chr The Epic’s description. Default NULL}
 
 \item{epic_state_id}{int The ID of the Epic State. See
-/code{get_all("epic-workflow")}, Defaults to your accounts default state}
+\code{get_all("epic-workflow")}, Defaults to your accounts default state}
 
 \item{milestone_id}{int The ID of the Milestone this Epic is related to. Default NULL}
 
