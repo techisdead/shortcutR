@@ -2,7 +2,7 @@ Package: shortcutr
 Type: Package
 Title: API wrappers for shortcut.com
 Description: <shortcut.io> is an online project management tool.  This package provides a set of wrappers for the shortcut API to help people build reports and manage their projects from R.
-Version: 0.0.1
+Version: 0.0.2
 Authors@R: person("Elizabeth", "Stark", role=c("aut", "cre"), email="estark@symbolix.com.au")
 URL: https://github.com/SymbolixAU/shortcutr
 BugReports: https://github.com/SymbolixAU/shortcutr/issues

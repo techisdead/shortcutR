@@ -123,6 +123,50 @@ create_iteration <- function(
   
 }
 
+#' create story link
+#' 
+#' @param object_id Numeric (Required). The ID of the object Story
+#' @param subject_id Numeric (Required). The ID of the subject Story
+#' @param verb Character (Required). The type of link. One of blocks, duplicates, relates to. Defaults to blocks
+#' @param config (optional) additional configuration to add to header
+#' @param sc_token shortcut API token.  Defaults to \code{get_token()}
+#' 
+#' @examples 
+#' \dontrun{
+#' create_story_link(
+#'   object_id = 123,
+#'   subject_id = 321,
+#'   verb = "duplicates"
+#' )
+#' }
+#' 
+#' @export
+#' 
+create_story_link <- function(
+    object_id
+    , subject_id
+    , verb = c('blocks', 'duplicates', 'relates to')
+    , config=list()
+    , sc_token = get_token()
+){
+  
+  match.arg(verb)
+  
+  lst_body <- list(
+    object_id = object_id,
+    subject_id = subject_id,
+    verb = verb
+  )
+  
+  body_content <- jsonlite::toJSON(lst_body, null = "null", auto_unbox = TRUE)
+  
+  df <- sc_POST(url = sc_url(endpoint = "story-links", sc_token = sc_token),
+                body = body_content,
+                config = config)
+  
+  return(df)
+  
+}
 
 
 fmt_date_string <- function(dte){
