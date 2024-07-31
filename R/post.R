@@ -150,7 +150,8 @@ create_story_link <- function(
     , sc_token = get_token()
 ){
   
-
+  match.arg(verb)
+  
   lst_body <- list(
     object_id = object_id,
     subject_id = subject_id,

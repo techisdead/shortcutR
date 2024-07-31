@@ -1,9 +1,10 @@
 # shortcutr (development version)
 
+
 ## v0.1.0
 
 * Added `create_story`
-
+* Added `create_story_link`
 
 
 
