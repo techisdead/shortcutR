@@ -5,6 +5,7 @@
 
 * Added `create_story`
 * Added `create_story_link`
+* Added `list_epic_stories`
 
 
 

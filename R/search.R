@@ -208,7 +208,9 @@ search_endpoint <- function(endpoint = "stories",
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' list_epic_stories(123)
+#' }
 list_epic_stories <- function(epic_id
                               , config=list()
                               , sc_token = get_token()){
