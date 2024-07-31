@@ -9,7 +9,7 @@ create_story(
   description,
   epic_id,
   owner_ids,
-  project_id,
+  project_id = NULL,
   workflow_state_id,
   group_id,
   archived = c(FALSE, TRUE),
@@ -32,7 +32,7 @@ create_story(
 
 \item{owner_ids}{List of Strings (Required). An list of UUIDs of the owners of this story.To get the Owner UUID, see \code{get_all("members")$id}}
 
-\item{project_id}{Numeric (Required). The ID of the project the story belongs to. To get the  Project ID, see \code{get_all("projects")$id}}
+\item{project_id}{Numeric (Required). The ID of the project the story belongs to. To get the  Project ID, see \code{get_all("projects")$id}. Note projects must be enabled for your team}
 
 \item{workflow_state_id}{Numeric (Required). The ID of the workflow state the story will be in. To get the Workflow State ID, see \code{get_all("workflows")$states$id}}
 
@@ -66,7 +66,7 @@ create_story(
   epic_id = 123,
   owner_ids = list("12345678-9012-3456-7890-123456789012"),
   workflow_state_id = 123,
-  project_id = 123,
+  project_id = NULL,
   group_id = "12345678-9012-3456-7890-123456789012",
   archived = FALSE,
   story_type = "feature",

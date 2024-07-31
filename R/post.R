@@ -5,7 +5,7 @@
 #' @param deadline POSIXct format. The Epic’s deadline. Default NULL
 #' @param description chr The Epic’s description. Default NULL
 #' @param epic_state_id int The ID of the Epic State. See
-#'        /code{get_all("epic-workflow")}, Defaults to your accounts default state
+#'        \code{get_all("epic-workflow")}, Defaults to your accounts default state
 #' @param milestone_id int The ID of the Milestone this Epic is related to. Default NULL
 #' @param planned_start_date POSIXct. The Epic’s planned start date. Default NULL
 #' @param requested_by_id uuid The ID of the member that requested the epic. Default NULL
@@ -141,7 +141,7 @@ fmt_date_string <- function(dte){
 #' @param description Character (Required). The description of the story.
 #' @param epic_id Numeric (Required). The ID of the epic the story belongs to. To get the Epic ID, see \code{get_all("epics")$id}
 #' @param owner_ids List of Strings (Required). An list of UUIDs of the owners of this story.To get the Owner UUID, see \code{get_all("members")$id}
-#' @param project_id Numeric (Required). The ID of the project the story belongs to. To get the  Project ID, see \code{get_all("projects")$id}
+#' @param project_id Numeric (Required). The ID of the project the story belongs to. To get the  Project ID, see \code{get_all("projects")$id}. Note projects must be enabled for your team
 #' @param workflow_state_id Numeric (Required). The ID of the workflow state the story will be in. To get the Workflow State ID, see \code{get_all("workflows")$states$id}
 #' @param group_id Character (Required). The ID of the group to associate with this story. To get the  Group ID, see \code{get_all("groups")$id}
 #' @param archived Character (Optional). Controls the story’s archived state. Defaults to FALSE
@@ -161,7 +161,7 @@ fmt_date_string <- function(dte){
 #'   epic_id = 123,
 #'   owner_ids = list("12345678-9012-3456-7890-123456789012"),
 #'   workflow_state_id = 123,
-#'   project_id = 123,
+#'   project_id = NULL,
 #'   group_id = "12345678-9012-3456-7890-123456789012",
 #'   archived = FALSE,
 #'   story_type = "feature",
@@ -199,7 +199,7 @@ create_story <- function(name
                          , description
                          , epic_id
                          , owner_ids
-                         , project_id
+                         , project_id = NULL
                          , workflow_state_id
                          , group_id
                          , archived = c(FALSE, TRUE)
