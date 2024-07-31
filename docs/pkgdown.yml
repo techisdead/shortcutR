@@ -1,7 +1,6 @@
-pandoc: 2.11.2
-pkgdown: 1.6.1
+pandoc: 2.19.2
+pkgdown: 2.0.9
 pkgdown_sha: ~
-articles:
-  iterations: iterations.html
-last_built: 2021-02-25T10:00Z
+articles: {}
+last_built: 2024-07-31T08:18Z
 

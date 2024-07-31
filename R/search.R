@@ -196,3 +196,34 @@ search_endpoint <- function(endpoint = "stories",
          }
   )
 }
+
+
+#' List Epic Stories
+#'
+#' @param epic_id Epic Id as numeric / character string
+#' @param config additional configuration to add to header
+#' @param sc_token shortcut API token
+#'
+#' @return Data frame with stories belonging to that Epic
+#' @export
+#'
+#' @examples
+#' \dontrun{
+#' list_epic_stories(123)
+#' }
+list_epic_stories <- function(epic_id
+                              , config=list()
+                              , sc_token = get_token()){
+  
+  
+  
+  if(is.null(epic_id)) stop("Please specify epic_id")
+  
+  df <- sc_GET(url = paste0(get_url(), "/epics/", epic_id, "/stories?token=", sc_token)
+               , config = config)
+  
+  return(df)
+  
+}
+
+
