@@ -9,6 +9,8 @@
 #' @param milestone_id int The ID of the Milestone this Epic is related to. Default NULL
 #' @param planned_start_date POSIXct. The Epic’s planned start date. Default NULL
 #' @param requested_by_id uuid The ID of the member that requested the epic. Default NULL
+#' @param owner_ids An array of UUIDs for any members you want to add as Owners on this new Epic.
+#' @param group_ids An array of UUIDS for Groups to which this Epic is related.
 #' @param config (optional) additional configuration to add to header
 #' @param sc_token shortcut API token.  Defaults to \code{get_token()}
 #'
@@ -28,10 +30,10 @@ create_epic <- function(name,
             epic_state_id = get_all("epic-workflow")$default_epic_state_id,
             milestone_id = NA,
             planned_start_date = NA,
+            owner_ids = NULL,
+            group_ids = NULL,
           #  follower_ids = NULL,
-          #  group_id = NULL,
           #  labels = NULL,
-          # owner_ids = NULL,
             requested_by_id = NULL,
             config=list(),
             sc_token = get_token()
@@ -44,7 +46,9 @@ create_epic <- function(name,
     description = description,
     epic_state_id = epic_state_id,
     milestone_id = milestone_id,
-    planned_start_date = fmt_date_string(planned_start_date)
+    planned_start_date = fmt_date_string(planned_start_date),
+    group_ids = group_ids,
+    owner_ids = owner_ids
   )
 
   body_content <- jsonlite::toJSON(lst_body, null = "null", auto_unbox = TRUE)
