@@ -41,6 +41,11 @@ testthat::test_that("Can't set both url and endpoint", {
     get_one(id = 123L, endpoint = "epics", url = "https://someurl.com")
   )
 })
+
+# List Epic Stories
+testthat::expect_error(
+  list_epic_stories()
+)
 # 
 # httptest::with_mock_api({
 #   test_that("We can list endpoint contents correctly", {
