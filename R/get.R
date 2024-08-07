@@ -31,7 +31,7 @@ get_all <- function(endpoint = NULL,
   match.arg(endpoint, choices = c("categories", "epic-workflow", "epics", 
             "files", "groups", "labels", "linked-files", "members",
             "milestones", "projects", "repositories", 
-            "teams", "workflows", "iterations"))
+            "teams", "workflows", "iterations", "custom-fields"))
   match.arg(response_type, choices = c("full", "minimal"))
   if(is.null(endpoint) & is.null(url)) stop("Please specify one of url or endpoint")
   if(!is.null(endpoint) & !is.null(url)) stop("Please specify only one of full url or endpoint")

@@ -19,6 +19,7 @@ create_story(
   iteration_id = NULL,
   deadline = NULL,
   labels = NULL,
+  custom_fields = NA,
   config = list(),
   sc_token = get_token()
 )
@@ -32,7 +33,7 @@ create_story(
 
 \item{owner_ids}{List of Strings (Required). An list of UUIDs of the owners of this story.To get the Owner UUID, see \code{get_all("members")$id}}
 
-\item{project_id}{Numeric (Required). The ID of the project the story belongs to. To get the  Project ID, see \code{get_all("projects")$id}. Note projects must be enabled for your team}
+\item{project_id}{Numeric. The ID of the project the story belongs to. To get the  Project ID, see \code{get_all("projects")$id}. Note projects must be enabled for your team}
 
 \item{workflow_state_id}{Numeric (Required). The ID of the workflow state the story will be in. To get the Workflow State ID, see \code{get_all("workflows")$states$id}}
 
@@ -51,6 +52,8 @@ create_story(
 \item{deadline}{POSIXct (Optional). The due date of the story.}
 
 \item{labels}{List of Labels (Optional). A list of labels attached to the story.}
+
+\item{custom_fields}{List of Custom Field Values (Optional). A map specifying a CustomField ID and CustomFieldEnumValue ID that represents an assertion of some value for a CustomField.}
 
 \item{config}{(optional) additional configuration to add to header}
 
@@ -96,6 +99,24 @@ create_story(
   story_type = "feature",
   description = "Test Description",
   labels = label_story
+)
+
+custom_field <- list(
+  list(
+  field_id = "62163760-4716-4b48-85c5-129b410a2857",
+  value = "Client - Billable Milestone",
+  value_id = "632ce902-8dca-4740-8ba4-5bbfb1dcbdd3"
+  )
+)
+create_story(name = "Test Story with Custom Field"
+  , description = "Mileston story"
+  , epic_id = 1234
+  , owner_ids = list("12345678-9012-3456-7890-123456789012")
+  , workflow_state_id = 123
+  , group_id = '12345678-9012-3456-7890-123456789012'
+  , archived = FALSE
+  , story_type = "feature"
+  , custom_fields = custom_field
 )
 }
 }
