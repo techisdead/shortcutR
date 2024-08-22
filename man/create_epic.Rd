@@ -11,7 +11,9 @@ create_epic(
   description = NULL,
   epic_state_id = get_all("epic-workflow")$default_epic_state_id,
   milestone_id = NA,
-  planned_start_date = NA,
+  planned_start_date = NULL,
+  owner_ids = NA,
+  group_ids = NA,
   requested_by_id = NULL,
   config = list(),
   sc_token = get_token()
@@ -27,11 +29,15 @@ create_epic(
 \item{description}{chr The Epic’s description. Default NULL}
 
 \item{epic_state_id}{int The ID of the Epic State. See
-/code{get_all("epic-workflow")}, Defaults to your accounts default state}
+\code{get_all("epic-workflow")}, Defaults to your accounts default state}
 
 \item{milestone_id}{int The ID of the Milestone this Epic is related to. Default NULL}
 
 \item{planned_start_date}{POSIXct. The Epic’s planned start date. Default NULL}
+
+\item{owner_ids}{A list of UUIDs for any members you want to add as Owners on this new Epic.}
+
+\item{group_ids}{A list of UUIDS for Groups to which this Epic is related.}
 
 \item{requested_by_id}{uuid The ID of the member that requested the epic. Default NULL}
 

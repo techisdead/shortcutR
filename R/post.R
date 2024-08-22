@@ -5,10 +5,12 @@
 #' @param deadline POSIXct format. The Epic’s deadline. Default NULL
 #' @param description chr The Epic’s description. Default NULL
 #' @param epic_state_id int The ID of the Epic State. See
-#'        /code{get_all("epic-workflow")}, Defaults to your accounts default state
+#'        \code{get_all("epic-workflow")}, Defaults to your accounts default state
 #' @param milestone_id int The ID of the Milestone this Epic is related to. Default NULL
 #' @param planned_start_date POSIXct. The Epic’s planned start date. Default NULL
 #' @param requested_by_id uuid The ID of the member that requested the epic. Default NULL
+#' @param owner_ids A list of UUIDs for any members you want to add as Owners on this new Epic.
+#' @param group_ids A list of UUIDS for Groups to which this Epic is related.
 #' @param config (optional) additional configuration to add to header
 #' @param sc_token shortcut API token.  Defaults to \code{get_token()}
 #'
@@ -27,11 +29,11 @@ create_epic <- function(name,
             description = NULL,
             epic_state_id = get_all("epic-workflow")$default_epic_state_id,
             milestone_id = NA,
-            planned_start_date = NA,
+            planned_start_date = NULL,
+            owner_ids = NA,
+            group_ids = NA,
           #  follower_ids = NULL,
-          #  group_id = NULL,
           #  labels = NULL,
-          # owner_ids = NULL,
             requested_by_id = NULL,
             config=list(),
             sc_token = get_token()
@@ -44,7 +46,9 @@ create_epic <- function(name,
     description = description,
     epic_state_id = epic_state_id,
     milestone_id = milestone_id,
-    planned_start_date = fmt_date_string(planned_start_date)
+    planned_start_date = fmt_date_string(planned_start_date),
+    group_ids = group_ids,
+    owner_ids = owner_ids
   )
 
   body_content <- jsonlite::toJSON(lst_body, null = "null", auto_unbox = TRUE)
@@ -123,10 +127,183 @@ create_iteration <- function(
   
 }
 
+#' create story link
+#' 
+#' @param object_id Numeric (Required). The ID of the object Story
+#' @param subject_id Numeric (Required). The ID of the subject Story
+#' @param verb Character (Required). The type of link. One of blocks, duplicates, relates to. Defaults to blocks
+#' @param config (optional) additional configuration to add to header
+#' @param sc_token shortcut API token.  Defaults to \code{get_token()}
+#' 
+#' @examples 
+#' \dontrun{
+#' create_story_link(
+#'   object_id = 123,
+#'   subject_id = 321,
+#'   verb = "duplicates"
+#' )
+#' }
+#' 
+#' @export
+#' 
+create_story_link <- function(
+    object_id
+    , subject_id
+    , verb = c('blocks', 'duplicates', 'relates to')
+    , config=list()
+    , sc_token = get_token()
+){
+  
+  match.arg(verb)
+  
+  lst_body <- list(
+    object_id = object_id,
+    subject_id = subject_id,
+    verb = verb
+  )
+  
+  body_content <- jsonlite::toJSON(lst_body, null = "null", auto_unbox = TRUE)
+  
+  df <- sc_POST(url = sc_url(endpoint = "story-links", sc_token = sc_token),
+                body = body_content,
+                config = config)
+  
+  return(df)
+  
+}
 
 
 fmt_date_string <- function(dte){
   
-  ifelse(is.null(dte),NULL, format(dte, "%Y-%m-%dT%H:%M:%SZ") )
+  if (is.null(dte)) {
+    return(NULL)
+  } else {
+    return(format(dte, "%Y-%m-%dT%H:%M:%SZ"))
+  }
   
+}
+
+#' create story
+#'
+#' @param name Character (Required). The Story’s name.
+#' @param description Character (Required). The description of the story.
+#' @param epic_id Numeric (Required). The ID of the epic the story belongs to. To get the Epic ID, see \code{get_all("epics")$id}
+#' @param owner_ids List of Strings (Required). An list of UUIDs of the owners of this story.To get the Owner UUID, see \code{get_all("members")$id}
+#' @param project_id Numeric. The ID of the project the story belongs to. To get the  Project ID, see \code{get_all("projects")$id}. Note projects must be enabled for your team
+#' @param workflow_state_id Numeric (Required). The ID of the workflow state the story will be in. To get the Workflow State ID, see \code{get_all("workflows")$states$id}
+#' @param group_id Character (Required). The ID of the group to associate with this story. To get the  Group ID, see \code{get_all("groups")$id}
+#' @param archived Character (Optional). Controls the story’s archived state. Defaults to FALSE
+#' @param story_type Character (Optional). The type of story (feature, bug, chore). Defaults to feature.
+#' @param created_at POSIXct (optional). The time/date the Story was created. Defaults to Sys.time().
+#' @param estimate Numeric (Optional). The numeric point estimate of the story. Defaults to NULL, which means unestimated.
+#' @param iteration_id Numeric (Optional). The ID of the iteration the story belongs to. To get the iteration_id, see \code{get_all("iterations")$id}
+#' @param deadline POSIXct (Optional). The due date of the story.
+#' @param labels List of Labels (Optional). A list of labels attached to the story.
+#' @param custom_fields List of Custom Field Values (Optional). A map specifying a CustomField ID and CustomFieldEnumValue ID that represents an assertion of some value for a CustomField.
+#' @param config (optional) additional configuration to add to header
+#' @param sc_token shortcut API token.  Defaults to \code{get_token()}
+#' 
+#' @examples
+#' \dontrun{
+#' create_story(
+#'   name = "Test Story",
+#'   epic_id = 123,
+#'   owner_ids = list("12345678-9012-3456-7890-123456789012"),
+#'   workflow_state_id = 123,
+#'   project_id = NULL,
+#'   group_id = "12345678-9012-3456-7890-123456789012",
+#'   archived = FALSE,
+#'   story_type = "feature",
+#'   description = "Test Description"
+#' )
+#' 
+#' 
+#' label_story <- list(
+#'   list(
+#'       color = '#49a940',
+#'       name = 'in sprint'
+#'     )
+#'     , list(
+#'       color = '#cc5856',
+#'       name = 'new request'
+#'     )
+#' )
+#' 
+#' create_story(
+#'   name = "Test Story",
+#'   epic_id = 123,
+#'   owner_ids = list("12345678-9012-3456-7890-123456789012"),
+#'   workflow_state_id = 123,
+#'   project_id = 123,
+#'   group_id = "12345678-9012-3456-7890-123456789012",
+#'   archived = FALSE,
+#'   story_type = "feature",
+#'   description = "Test Description",
+#'   labels = label_story
+#' )
+#' 
+#' custom_field <- list(
+#'   list(
+#'   field_id = "62163760-4716-4b48-85c5-129b410a2857",
+#'   value = "Client - Billable Milestone",
+#'   value_id = "632ce902-8dca-4740-8ba4-5bbfb1dcbdd3"
+#'   )
+#' )
+#' create_story(name = "Test Story with Custom Field"
+#'   , description = "Mileston story"
+#'   , epic_id = 1234
+#'   , owner_ids = list("12345678-9012-3456-7890-123456789012")
+#'   , workflow_state_id = 123
+#'   , group_id = '12345678-9012-3456-7890-123456789012'
+#'   , archived = FALSE
+#'   , story_type = "feature"
+#'   , custom_fields = custom_field
+#' )
+#'}
+#' @export
+#'
+create_story <- function(name
+                         , description
+                         , epic_id
+                         , owner_ids
+                         , project_id = NULL
+                         , workflow_state_id
+                         , group_id
+                         , archived = c(FALSE, TRUE)
+                         , story_type = c('feature', 'bug', 'chore')
+                         , created_at = Sys.time()
+                         , estimate = NULL
+                         , iteration_id = NULL
+                         , deadline = NULL
+                         , labels = NULL
+                         , custom_fields = NA
+                         , config=list()
+                         , sc_token = get_token()
+){
+  
+  lst_body <- list(
+    name = name,
+    description = description,
+    epic_id = epic_id,
+    owner_ids = owner_ids,
+    project_id = project_id,
+    workflow_state_id = workflow_state_id,
+    group_id = group_id,
+    archived = archived,
+    story_type = story_type,
+    created_at = fmt_date_string(created_at),
+    estimate = estimate,
+    iteration_id = iteration_id,
+    deadline = fmt_date_string(deadline),
+    labels = labels,
+    custom_fields = custom_fields
+  )
+  
+  body_content <- jsonlite::toJSON(lst_body, null = "null", auto_unbox = TRUE)
+
+  df <- sc_POST(url = sc_url(endpoint = "stories", sc_token = sc_token),
+                body = body_content,
+                config = config)
+  
+  return(df)
 }
